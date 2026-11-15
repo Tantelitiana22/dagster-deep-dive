@@ -58,7 +58,7 @@ def taxi_zones_file() -> None:
 def execute_query(database: DuckDBResource,query: str, parameters: tuple = ()) -> None:
     """Execute a SQL query against DuckDB."""
     with database.get_connection() as conn:
-        conn.execute(query)
+        conn.execute(query,parameters)
 
 @dg.asset(deps=["taxi_trips_file"])
 def taxi_trips(database: DuckDBResource) -> None:
